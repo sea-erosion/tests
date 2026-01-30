@@ -1,0 +1,587 @@
+/* UI/UX Improvements - Additional Styles */
+/* プログレストラッカー、ブックマーク、テーマ設定用のスタイル */
+
+:root {
+  --transition-speed: 0.3s;
+  --brightness-filter: brightness(1);
+}
+
+/* ========================================
+   Progress Tracker Styles
+   ======================================== */
+
+.progress-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-item {
+  background: var(--bg-card);
+  border: 1px solid var(--accent-alpha);
+  padding: 1.5rem;
+  border-radius: 4px;
+  text-align: center;
+  transition: all var(--transition-speed);
+}
+
+.stat-item:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.stat-label {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  font-family: 'DotGothic16', sans-serif;
+}
+
+.stat-value {
+  display: block;
+  color: var(--accent);
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: 'DotGothic16', sans-serif;
+}
+
+.progress-bar-container {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background: var(--bg-dark);
+  border: 1px solid var(--accent-alpha);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), rgba(0, 255, 255, 0.5));
+  transition: width 0.5s ease;
+  box-shadow: 0 0 20px var(--accent);
+}
+
+.progress-percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text);
+  font-family: 'DotGothic16', sans-serif;
+  font-size: 0.9rem;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+}
+
+/* Badge Styles */
+.badge-card {
+  background: var(--bg-card);
+  border: 1px solid var(--accent-alpha);
+  padding: 1.5rem;
+  border-radius: 4px;
+  text-align: center;
+  transition: all var(--transition-speed);
+  position: relative;
+}
+
+.badge-card.unlocked {
+  border-color: var(--accent);
+}
+
+.badge-card.locked {
+  opacity: 0.5;
+}
+
+.badge-card:hover.unlocked {
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+  transform: translateY(-5px);
+}
+
+.badge-icon-large {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.badge-name {
+  font-family: 'DotGothic16', sans-serif;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.badge-description {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.badge-status {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  background: rgba(128, 128, 128, 0.2);
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-family: 'DotGothic16', sans-serif;
+}
+
+.badge-status.unlocked {
+  background: rgba(0, 255, 255, 0.2);
+  color: var(--accent);
+}
+
+/* Badge Notification */
+.badge-notification {
+  position: fixed;
+  top: -200px;
+  right: 2rem;
+  background: var(--bg-card);
+  border: 2px solid var(--accent);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 255, 255, 0.5);
+  z-index: 10000;
+  min-width: 300px;
+  transition: top 0.5s ease;
+}
+
+.badge-notification.show {
+  top: 2rem;
+}
+
+.badge-notification-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.badge-notification .badge-icon {
+  font-size: 2.5rem;
+}
+
+.badge-notification h4 {
+  color: var(--accent);
+  font-family: 'DotGothic16', sans-serif;
+  margin-bottom: 0.3rem;
+}
+
+.badge-notification .badge-name {
+  color: var(--text);
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}
+
+.badge-notification .badge-desc {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* ========================================
+   Bookmark Styles
+   ======================================== */
+
+.bookmarks-section {
+  margin-top: 2rem;
+}
+
+.bookmark-card {
+  background: var(--bg-card);
+  border: 1px solid var(--accent-alpha);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  transition: all var(--transition-speed);
+}
+
+.bookmark-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.bookmark-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.bookmark-info {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.bookmark-date {
+  font-family: 'DotGothic16', sans-serif;
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+
+.bookmark-author {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.bookmark-remove-btn {
+  background: transparent;
+  border: none;
+  color: #ff4d4d;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  transition: all var(--transition-speed);
+}
+
+.bookmark-remove-btn:hover {
+  color: #ff0000;
+  transform: scale(1.2);
+}
+
+.bookmark-title {
+  font-family: 'DotGothic16', sans-serif;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: color var(--transition-speed);
+}
+
+.bookmark-title:hover {
+  color: var(--accent);
+}
+
+.bookmark-note {
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  background: rgba(0, 255, 255, 0.05);
+  border-left: 3px solid var(--accent);
+  border-radius: 4px;
+}
+
+.bookmark-tags {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  padding: 0.3rem 0.8rem;
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-family: 'DotGothic16', sans-serif;
+}
+
+.add-tag-btn {
+  padding: 0.3rem 0.8rem;
+  background: transparent;
+  border: 1px dashed var(--accent-alpha);
+  border-radius: 12px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.add-tag-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.bookmark-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-small {
+  padding: 0.4rem 1rem;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 4px;
+  font-family: 'DotGothic16', sans-serif;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.btn-small:hover {
+  background: var(--accent);
+  color: var(--bg-dark);
+}
+
+.bookmark-notification {
+  position: fixed;
+  bottom: -100px;
+  right: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--accent);
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  box-shadow: 0 5px 20px rgba(0, 255, 255, 0.3);
+  z-index: 10000;
+  transition: bottom 0.3s ease;
+  font-family: 'DotGothic16', sans-serif;
+  color: var(--accent);
+}
+
+.bookmark-notification.show {
+  bottom: 2rem;
+}
+
+.no-bookmarks {
+  text-align: center;
+  padding: 3rem;
+  background: var(--bg-card);
+  border: 1px solid var(--accent-alpha);
+  border-radius: 4px;
+}
+
+/* ========================================
+   Theme Settings Styles
+   ======================================== */
+
+.theme-settings-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--accent-alpha);
+  padding: 2rem;
+  border-radius: 4px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.settings-title {
+  font-family: 'DotGothic16', sans-serif;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.setting-group {
+  margin-bottom: 2rem;
+}
+
+.setting-label {
+  display: block;
+  color: var(--text);
+  font-family: 'DotGothic16', sans-serif;
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.mode-selector {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.mode-btn {
+  padding: 0.8rem;
+  background: transparent;
+  border: 1px solid var(--accent-alpha);
+  color: var(--text);
+  border-radius: 4px;
+  font-family: 'DotGothic16', sans-serif;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.mode-btn:hover {
+  border-color: var(--accent);
+}
+
+.mode-btn.active {
+  background: var(--accent);
+  color: var(--bg-dark);
+  border-color: var(--accent);
+}
+
+.setting-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.setting-checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+.setting-checkbox span {
+  color: var(--text);
+  font-size: 0.9rem;
+}
+
+.slider {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-dark);
+  border: 1px solid var(--accent-alpha);
+  border-radius: 3px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.color-picker {
+  width: 100%;
+  height: 50px;
+  border: 1px solid var(--accent-alpha);
+  border-radius: 4px;
+  cursor: pointer;
+  background: var(--bg-dark);
+}
+
+.preset-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 0.5rem;
+}
+
+.preset-btn {
+  padding: 0.6rem;
+  background: transparent;
+  border: 1px solid var(--accent-alpha);
+  color: var(--text);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.preset-btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-alpha);
+}
+
+.btn-secondary {
+  width: 100%;
+  padding: 0.8rem;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: 4px;
+  font-family: 'DotGothic16', sans-serif;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+}
+
+.btn-secondary:hover {
+  background: var(--accent);
+  color: var(--bg-dark);
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 768px) {
+  .progress-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .mode-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .preset-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .badge-notification,
+  .bookmark-notification {
+    left: 1rem;
+    right: 1rem;
+  }
+
+  .bookmark-actions {
+    flex-direction: column;
+  }
+
+  .btn-small {
+    width: 100%;
+  }
+}
+
+/* ========================================
+   Bookmark Button (for log detail pages)
+   ======================================== */
+
+.bookmark-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  background: var(--accent);
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(0, 255, 255, 0.5);
+  transition: all var(--transition-speed);
+  z-index: 100;
+}
+
+.bookmark-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(0, 255, 255, 0.7);
+}
+
+.bookmark-btn.bookmarked {
+  background: #ff4d4d;
+}
+
+/* ========================================
+   Progress Badge on Header
+   ======================================== */
+
+.progress-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-family: 'DotGothic16', sans-serif;
+  color: var(--accent);
+}
+
+.progress-icon {
+  font-size: 0.9rem;
+}
