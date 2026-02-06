@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'isemin'; /* 1. フォントに名前を付ける */
+  src: url('../fonts/isemin.woff2') format('woff2'); /* 2. フォントへのパス */
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root{
 --bg-main:#050811;
 --bg-card:#111827;
